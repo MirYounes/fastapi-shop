@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  redis:
+    container_name: redis
+    image: redis:latest
+    networks:
+      - main
+    restart: on-failure
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+    networks:
+      - main
+    ports:
+      - "5432:5432"
+    restart: on-failure
+    volumes:
+      - postgres_data:/var/lib/postgresql/postgres_data
+
+  app :
+    container_name : app
+    build: .
+    command : sh -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    restart: always
+    networks:
+      - main
+    volumes :
+      - media_file:/app/media
+
+
+networks:
+  main:
+
+
+    
+volumes:
+  postgres_data:
+    
+  media_file:

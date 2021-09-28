@@ -1,0 +1,21 @@
+from decouple import config
+
+
+SECRET_KEY = config("SECRET_KEY")
+JWT_ALGORITHM = "HS256"
+JWT_EXPIRE_TIME = 1000
+
+
+DATABASE_URL = config("DB_URL")
+
+MAIL_USERNAME=config("MAIL_USERNAME")
+MAIL_PASSWORD=config("MAIL_PASSWORD")
+MAIL_FROM=config("MAIL_FROM")
+MAIL_PORT=587
+MAIL_SERVER="smtp.gmail.com"
+MAIL_TLS=True
+MAIL_SSL=False
+
+
+CART_PREFIX = 'cart'
+CART_EXPIRE = 1000
