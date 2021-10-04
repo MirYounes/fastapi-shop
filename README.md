@@ -1,5 +1,13 @@
-# django-rest-shop
-A simple **fastapi** e-commerce application writen with Rest Full Api architecture and sqlalchemy orm
+# fastapi-rest-shop
+A simple shop with basic shop features written with fastapi
+
+# features
+- RESTful framework with fastapi
+- using sqlAlchemy orm for connecting to the database
+- JSON Web Tokens authentication
+- sending email to user asynchronously 
+- use redis functional for storing cart data and user tokens
+- dockerized
 
 # Technologies
 [![](https://img.shields.io/badge/python-3.x-blue)](https://www.python.org/)
